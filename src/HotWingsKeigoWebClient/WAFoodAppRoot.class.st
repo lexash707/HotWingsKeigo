@@ -1,21 +1,21 @@
 Class {
 	#name : #WAFoodAppRoot,
-	#superclass : #Object,
+	#superclass : #WAComponent,
 	#category : #HotWingsKeigoWebClient
 }
 
 { #category : #initialization }
 WAFoodAppRoot class >> canBeRoot [
-	^ true.
+	^ true
 ]
 
 { #category : #initialization }
 WAFoodAppRoot class >> initialize [
 	| app |
-	app := WAAdmin register: self asApplicationAt: 'HotWingsKeigo'
+	app := WAAdmin register: self asApplicationAt: 'HelloWorld'
 ]
 
 { #category : #rendering }
 WAFoodAppRoot >> renderContentOn: html [
-	html text: 'Hello World'
+	html text: 'Hello World!'
 ]
