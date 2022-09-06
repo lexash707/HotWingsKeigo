@@ -12,3 +12,13 @@ Class {
 FoodItem class >> name: nameVal price: priceVal [
 	^ self new name: nameVal price: priceVal
 ]
+
+{ #category : #private }
+FoodItem >> getName [
+	^ name
+]
+
+{ #category : #private }
+FoodItem >> getPrice [
+	^ price
+]
