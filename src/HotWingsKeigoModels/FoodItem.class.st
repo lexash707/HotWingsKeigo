@@ -10,7 +10,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 FoodItem class >> name: nameVal price: priceVal [
-	^ self new name: nameVal price: priceVal
+	^ self new name: nameVal; price: priceVal
 ]
 
 { #category : #private }
@@ -21,4 +21,14 @@ FoodItem >> getName [
 { #category : #private }
 FoodItem >> getPrice [
 	^ price
+]
+
+{ #category : #accessing }
+FoodItem >> name: aString [
+	name := aString
+]
+
+{ #category : #accessing }
+FoodItem >> price: anInteger [
+	price := anInteger
 ]
