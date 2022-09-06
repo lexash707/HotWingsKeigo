@@ -4,12 +4,20 @@ Class {
 	#instVars : [
 		'foodList'
 	],
+	#classVars : [
+		'sourceList'
+	],
 	#category : #HotWingsKeigo
 }
 
 { #category : #initialization }
 WAFoodAppRoot class >> canBeRoot [
 	^ true
+]
+
+{ #category : #'as yet unclassified' }
+WAFoodAppRoot class >> getFoodList [
+	^ sourceList 
 ]
 
 { #category : #initialization }
@@ -27,6 +35,7 @@ WAFoodAppRoot >> initialize [
 	foodList at: 2 put: (FoodItem name: 'Food Item 2' price: 20).
 	foodList at: 3 put: (FoodItem name: 'Food Item 3' price: 30).
 	foodList at: 4 put: (FoodItem name: 'Food Item 4' price: 40).
+	sourceList := foodList.
 ]
 
 { #category : #rendering }
