@@ -33,7 +33,7 @@ WAFoodAppRoot >> initialize [
 WAFoodAppRoot >> renderContentOn: html [
 	html tbsContainer: [ 
 		foodList   
-			ifNil: [ WANoFoodError new renderContentOn: html. ]; 
-			ifNotNil: [ WAFoodOrdering list: foodList renderContentOn: html. ].
+			ifNil: [ WANoFoodError new renderContentOn: html ]; 
+			ifNotNil: [ WAFoodOrdering list: foodList renderContentOn: html ].
 	 ].
 ]

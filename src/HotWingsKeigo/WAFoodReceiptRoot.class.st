@@ -21,10 +21,14 @@ WAFoodReceiptRoot class >> initialize [
 
 { #category : #rendering }
 WAFoodReceiptRoot >> renderContentOn: html [
-	html tbsForm
-		method: 'GET';
-		action: 'FoodApp';
-		with: [
-			html tbsSubmitButton with: 'Go to Order Page'.
+	html tbsContainer: [ 
+		html heading level2; with: 'Thank you for order.'.
+		html heading level3; with: 'Your total is: '.
+		html tbsForm
+			method: 'GET';
+			action: 'FoodApp';
+			with: [
+				html tbsSubmitButton with: 'Go to Order Page'.
+			]
 	]
 ]

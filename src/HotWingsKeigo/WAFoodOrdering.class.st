@@ -2,8 +2,7 @@ Class {
 	#name : #WAFoodOrdering,
 	#superclass : #WAComponent,
 	#instVars : [
-		'foodList',
-		'totalPrice'
+		'foodList'
 	],
 	#category : #HotWingsKeigo
 }
@@ -21,7 +20,6 @@ WAFoodOrdering class >> list: foodList renderContentOn: html [
 { #category : #rendering }
 WAFoodOrdering >> initialize [
 	foodList := Dictionary new.
-	totalPrice := 0.
 ]
 
 { #category : #rendering }
@@ -48,9 +46,6 @@ WAFoodOrdering >> renderContentOn: html [
 						html heading level3; with: 'Amount'.
 					].
 			].
-			html tbsRow: [ 
-				
-			].
 			foodList collect: [ :value |
 				html tbsRow: [  
 					html tbsColumn
@@ -72,15 +67,16 @@ WAFoodOrdering >> renderContentOn: html [
 								min: 0;
 								max: 10;
 								value: 0;
-								callback: [ #value | totalPrice += value. ];
 								tbsFormControl.
 						]
 					].
 				].
 				html tbsRow: [ 
 					html heading level4; with: 'Delivery (costs extra 5): '.
-					html checkbox tbsFormControl
-						name: 'Delivery'.
+					html checkbox
+						name: 'Delivery';
+						value: false;
+						tbsFormControl.
 				].
 				html tbsRow: [ 
 					html tbsSubmitButton with: 'Order'.
