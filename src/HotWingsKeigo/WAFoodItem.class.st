@@ -6,7 +6,7 @@ Class {
 		'price',
 		'count'
 	],
-	#category : #HotWingsKeigoWebClient
+	#category : #HotWingsKeigo
 }
 
 { #category : #initialization }

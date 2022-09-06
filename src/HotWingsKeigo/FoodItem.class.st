@@ -5,7 +5,7 @@ Class {
 		'name',
 		'price'
 	],
-	#category : #HotWingsKeigoModels
+	#category : #HotWingsKeigo
 }
 
 { #category : #'as yet unclassified' }
