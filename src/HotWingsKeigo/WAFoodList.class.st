@@ -24,7 +24,7 @@ WAFoodList >> initialize [
 
 { #category : #rendering }
 WAFoodList >> renderContentOn: html [
-	html table: [ 
+	html tbsTable: [ 
 		html tableHead: [ 
 			html
 				tableHeading: 'Food name';

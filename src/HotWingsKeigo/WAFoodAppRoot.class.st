@@ -14,7 +14,7 @@ WAFoodAppRoot class >> canBeRoot [
 
 { #category : #initialization }
 WAFoodAppRoot class >> initialize [
-	(WAAdmin register: self asApplicationAt: 'HelloWorld')
+	(WAAdmin register: self asApplicationAt: 'FoodApp')
 		addLibrary: JQDeploymentLibrary;
 		addLibrary: TBSDeploymentLibrary 
 ]
@@ -31,10 +31,12 @@ WAFoodAppRoot >> initialize [
 
 { #category : #rendering }
 WAFoodAppRoot >> renderContentOn: html [
-	html 
-		div with: [ 
-			foodList   
-				ifNil: [ WANoFoodError new renderContentOn: html. ]; 
-				ifNotNil: [ WAFoodList list: foodList renderContentOn: html. ].
-		].
+	html tbsContainer: [ 
+		html 
+			div with: [ 
+				foodList   
+					ifNil: [ WANoFoodError new renderContentOn: html. ]; 
+					ifNotNil: [ WAFoodList list: foodList renderContentOn: html. ].
+			].
+		 ].
 ]
