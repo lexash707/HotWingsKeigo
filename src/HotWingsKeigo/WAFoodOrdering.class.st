@@ -19,17 +19,7 @@ WAFoodOrdering class >> list: foodList renderContentOn: html [
 
 { #category : #'as yet unclassified' }
 WAFoodOrdering >> calculateFullPrice [
-	^ JSStream on: 'console.log("Calculating price."); window.location.replace("/FoodReceipt");'.
-]
-
-{ #category : #'as yet unclassified' }
-WAFoodOrdering >> changeAmount: html forId: id [
-	^ JSStream on: 'console.log("Hello Ew - ', id asString , ' - ' , id asString , '");'.
-]
-
-{ #category : #'as yet unclassified' }
-WAFoodOrdering >> changeDelivery [
-	^ JSStream on: 'console.log("Changing delivery!");'.
+	^ JSStream on: 'let sum = 0; $('':input[type="number"]'').each((x, y) => {sum += (Number(y.value) * Number(y.title))});sum += $(''#Delivery'').prop(''checked'') ? 5 : 0;window.location.replace("/FoodReceipt?Total=" + sum);'.
 ]
 
 { #category : #rendering }
@@ -40,8 +30,6 @@ WAFoodOrdering >> initialize [
 { #category : #rendering }
 WAFoodOrdering >> renderContentOn: html [
 	html tbsForm
-		method: '';
-		action: '#';
 		with: [ 
 		html tbsContainer: [ 
 			html tbsRow: [ 
@@ -79,11 +67,11 @@ WAFoodOrdering >> renderContentOn: html [
 							html numberInput
 								id: pair key;
 								name: pair value getName;
+								title: pair value getPrice;
 								step: 1;
 								min: 0;
 								max: 10;
 								value: 0;
-								onChange: ( self changeAmount: html forId: pair key );
 								tbsFormControl.
 						]
 					].
@@ -92,12 +80,13 @@ WAFoodOrdering >> renderContentOn: html [
 					html heading level4; with: 'Delivery (costs extra 5): '.
 					html checkbox
 						name: 'Delivery';
+						id: 'Delivery';
 						value: false;
-						onChange: ( self changeDelivery );
 						tbsFormControl.
 				].
 				html tbsRow: [ 
 					html tbsButton
+						type: 'button';
 						onClick: ( self calculateFullPrice );
 						with: 'Order'.
 				].

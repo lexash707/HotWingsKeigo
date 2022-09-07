@@ -19,12 +19,9 @@ WAFoodReceiptRoot class >> initialize [
 { #category : #rendering }
 WAFoodReceiptRoot >> renderContentOn: html [
 	html tbsContainer
-		onLoad: [
-			html jQuery alert: 'Hello World'
-		];
 		with: [ 
 		html heading level2; with: 'Thank you for order.'.
-		html heading level3; with: 'Your total is: '.
+		html heading level3; id: 'totalText'; with: 'placeholder text'.
 		WAFoodAppRoot getFoodList.
 		html tbsForm
 			method: 'GET';
@@ -37,5 +34,5 @@ WAFoodReceiptRoot >> renderContentOn: html [
 
 { #category : #accessing }
 WAFoodReceiptRoot >> script [
-	^ 'const params = new URLSearchParams(window.location.search);'
+	^ 'const params = new URLSearchParams(window.location.search);$(document).ready(function () {$("#totalText").text("Your total is: " + params.get("Total"));});'.
 ]
